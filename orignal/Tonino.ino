@@ -46,16 +46,16 @@
 
 #define VERSION "1 1 7"
 
-#include <tonino.h>
-#include <tonino_lcd.h>
-#include <tonino_tcs3200.h>
-#include <tonino_serial.h>
-#include <tonino_config.h>
+#include <tonino.h>//define setting 的宏
+#include <tonino_lcd.h> //控制数码管的库
+#include <tonino_tcs3200.h>// 获取tcs3200的参数。用tcs34725 代替
+#include <tonino_serial.h> //串口处理函数汇集
+#include <tonino_config.h> //EEPROM里面的数据设置
 
 // lib that calls method according to serial input
 // slightly adapted from
 // https://github.com/kroimon/Arduino-SerialCommand, Version 20120522
-#include <SerialCommand.h>
+#include <SerialCommand.h> //将电脑发过来的串口数据编程命令。
 
 // i2c lib for LCD, built-in, see http://arduino.cc/en/Reference/Wire
 #include <Wire.h>
