@@ -10,6 +10,7 @@
             "includePath": [
                 "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/include",
                 "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/src",
+                "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/SerialCommand",
                 "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/TCS34725AutoGain",
                 "/Users/xiaoning/.platformio/packages/framework-lgt8fx/cores/lgt8f",
                 "/Users/xiaoning/.platformio/packages/framework-lgt8fx/variants/lgt8fx8p48",
@@ -36,6 +37,7 @@
                 "path": [
                     "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/include",
                     "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/src",
+                    "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/SerialCommand",
                     "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/TCS34725AutoGain",
                     "/Users/xiaoning/.platformio/packages/framework-lgt8fx/cores/lgt8f",
                     "/Users/xiaoning/.platformio/packages/framework-lgt8fx/variants/lgt8fx8p48",
