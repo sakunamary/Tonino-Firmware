@@ -1,7 +1,7 @@
 
 
 
-#define VERSION "1"
+#define VERSION "3"
 
 
 
@@ -25,6 +25,16 @@
 
 
 
+
+// LCD object
+LCD display = LCD(); //待换
+
+// color sensor object
+#define CS_POWER 2
+#define CS_S2    7
+#define CS_S3    6
+#define CS_LED   3
+TCS3200 colorSense = TCS3200(CS_S2, CS_S3, CS_LED, CS_POWER, &display);
 
 void setup() {
   // put your setup code here, to run once:

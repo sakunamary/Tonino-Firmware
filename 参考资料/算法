@@ -1,0 +1,114 @@
+
+// called when detected first calibration plate with quick scan
+boolean calibrate() {
+  sensorData sd;
+  
+  display.calibration1();
+  WRITEDEBUGLN("Cal.");
+  delay(500);
+  
+  // scan plate 1
+  colorSense.scan(NULL, false, &sd);
+  if (checkCommands()) return false;
+  display.calibration1();
+  delay(500);
+  if (checkCommands()) return false;
+
+  float redavg = sd.value[RED_IDX];
+  float blueavg = sd.value[BLUE_IDX];
+  
+  if ((abs(redavg - LOW_RED) < RED_RANGE_LOW) && (abs(blueavg - LOW_BLUE) < BLUE_RANGE_LOW)) {
+
+    float rb_low = redavg / blueavg;
+
+    WRITEDEBUG(redavg);
+    WRITEDEBUG("/");
+    WRITEDEBUG(blueavg);
+    WRITEDEBUG("=");
+    WRITEDEBUGF(rb_low, 5);
+    WRITEDEBUG("; ");
+
+    // wait for other plate
+    uint16_t delayTillUpTest = tConfig.getDelayTillUpTest() * 100;
+    while (true) {
+      display.calibration2();
+
+      // wait till can is lifted and put down again
+      while (colorSense.isDark()) {
+        delay(delayTillUpTest);
+        if (checkCommands()) return false;
+      }
+      display.up();
+      while (colorSense.isLight()) {
+        delay(delayTillUpTest);
+        if (checkCommands()) return false;
+      }
+      display.calibration2();
+      delay(500);
+
+      // scan plate 2
+      colorSense.scan(NULL, false, &sd);
+      if (checkCommands()) return false;
+      display.calibration2();
+      delay(500);
+      if (checkCommands()) return false;
+
+      redavg = sd.value[RED_IDX];
+      blueavg = sd.value[BLUE_IDX];
+      float rb_high = redavg / blueavg;
+
+      float cal[2];
+      cal[0] = (HIGH_TARGET - LOW_TARGET) / (rb_high - rb_low);
+      cal[1] = LOW_TARGET - cal[0]*rb_low;
+
+      WRITEDEBUG(redavg);
+      WRITEDEBUG("/");
+      WRITEDEBUG(blueavg);
+      WRITEDEBUG("=");
+      WRITEDEBUGF(rb_high, 5);
+      
+      WRITEDEBUG("=>");
+      WRITEDEBUGF(cal[0], 5);
+      WRITEDEBUG(",");
+      WRITEDEBUGLNF(cal[1], 5);
+
+      if (checkCommands()) return false;
+
+      tConfig.setCalibration(cal);
+      delay(10);
+      return true;
+    }
+
+  } else {
+    // could not detect first plate even though quick check thought so - error and continue
+    display.error();
+    delay(3000);
+    return false;
+  }
+}
+
+
+  主要是红跟绿色构成棕色
+
+
+
+
+
+
+// make a full scan and display on LCD
+inline void scanAndDisplay(float* lastRaw) {
+  boolean averaged = false; // indicates if readings got averaged with the lastRaw (the previous one)
+  
+  // make a measurement with stored configuration, parameters:
+  // 1: lastRaw: passes lastRaw readings for averaging
+  // 2: false: no display animation during scan
+  // 3: NULL: not interested in raw values
+  // 4: true: switch on LEDs
+  // 5: false: no explicit external light removal
+  // 6: averaged: return flag that indicates that result got averaged
+  int32_t tval = colorSense.scan(lastRaw, false, NULL, true, false, &averaged);
+ 
+
+  displayNum(tval);
+  display.averaged(averaged); // display the averaged indicator
+}
