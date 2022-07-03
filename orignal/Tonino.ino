@@ -47,7 +47,7 @@
 #define VERSION "1 1 7"
 
 #include <tonino.h>//define setting 的宏
-#include <tonino_lcd.h> //控制数码管的库
+//#include <tonino_lcd.h> //控制数码管的库
 #include <tonino_tcs3200.h>// 获取tcs3200的参数。用tcs34725 代替
 #include <tonino_serial.h> //串口处理函数汇集
 #include <tonino_config.h> //EEPROM里面的数据设置
@@ -60,6 +60,6 @@
 // i2c lib for LCD, built-in, see http://arduino.cc/en/Reference/Wire
 #include <Wire.h>
 // frequence counting lib for color sensor, http://www.pjrc.com/teensy/td_libs_FreqCount.html, Version 1.0
-#include <FreqCount.h>
+//#include <FreqCount.h>
 // lib to access EEPROM, built-in, see http://arduino.cc/en/Reference/EEPROM
 #include <EEPROM.h>
