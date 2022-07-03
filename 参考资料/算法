@@ -112,3 +112,53 @@ inline void scanAndDisplay(float* lastRaw) {
   displayNum(tval);
   display.averaged(averaged); // display the averaged indicator
 }
+
+
+
+
+数据结构
+ sd  sensorData 传感器数据 
+// to store one measurement (4 colors and T-value)
+typedef struct {
+    int32_t value[5];
+  } sensorData;
+  
+
+#define   WHITE_IDX   0  // 'Clear' filter selection
+#define   RED_IDX     1   
+#define   GREEN_IDX   2
+#define   BLUE_IDX    3
+#define   T_IDX       4  // index for storing T-value
+
+
+
+
+可见光色散谱
+https://baike.baidu.com/item/%E5%8F%AF%E8%A7%81%E5%85%89/1241853
+
+
+频率不同的电磁波，引起人眼的颜色感觉不同 [2]  。
+颜色
+频率
+波长
+图例
+红
+385~482THz
+780～622nm
+可见光颜色对应的波长
+可见光颜色对应的波长
+橙
+482~503THz
+622～597nm
+黄
+503~520THz
+597～577nm
+绿
+520~610THz
+577～492nm
+蓝、靛
+610~659THz
+492～455nm
+紫
+659~750THz
+455～400nm
