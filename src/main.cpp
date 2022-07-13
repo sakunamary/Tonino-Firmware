@@ -17,9 +17,12 @@
 */
 
 
-
-
-
+//=================颜色传感模块连接=====================
+/*-----------------------------------------------------
+       |EO-----GND
+       |S0-----VCC | S2-----P2.0 | OUT-------P3.5 
+       |S1-----VCC | S3-----P2.1 | 
+  ---------------------------------------------------*/
 
 
 
@@ -45,14 +48,14 @@
 #define CS_S2    7
 #define CS_S3    6
 #define CS_LED   3
-TCS3200 colorSense = TCS3200(CS_S2, CS_S3, CS_LED, CS_POWER, &display);
+TCS3200 colorSense = TCS3200(CS_S2, CS_S3, CS_LED, CS_POWER);
 
 
 
 // object for all parameters
-ToninoConfig tConfig = ToninoConfig(&colorSense, &display);
+ToninoConfig tConfig = ToninoConfig(&colorSense);
 // object for serial communication
-ToninoSerial tSerial = ToninoSerial(&colorSense, &display, &tConfig, VERSION);
+ToninoSerial tSerial = ToninoSerial(&colorSense,  &tConfig, VERSION);
 
 
 
@@ -67,19 +70,17 @@ boolean checkCommands() {   //检测是否有串口命令
 boolean calibrate() {
   sensorData sd;
   
-  display.calibration1();
   WRITEDEBUGLN("Cal.");
   delay(500);
   
   // scan plate 1
   colorSense.scan(NULL, false, &sd);
   if (checkCommands()) return false;
-  display.calibration1();
   delay(500);
   if (checkCommands()) return false;
 
-  float redavg = sd.value[RED_IDX];
-  float blueavg = sd.value[BLUE_IDX];
+  float redavg = sd.value[RED_IDX]; // RED_IDX = 1 
+  float blueavg = sd.value[BLUE_IDX]; // BLUE_IDX =3 
   
   if ((abs(redavg - LOW_RED) < RED_RANGE_LOW) && (abs(blueavg - LOW_BLUE) < BLUE_RANGE_LOW)) {
 
@@ -145,7 +146,7 @@ boolean calibrate() {
 
   } else {
     // could not detect first plate even though quick check thought so - error and continue
-    display.error();
+    WRITEDEBUG("ERROR: something is wrong");
     delay(3000);
     return false;
   }

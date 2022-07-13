@@ -136,6 +136,8 @@ typedef struct {
 可见光色散谱
 https://baike.baidu.com/item/%E5%8F%AF%E8%A7%81%E5%85%89/1241853
 
+颜色代码 查询网站：http://www.59178.com/tools/sejie.asp
+
 
 频率不同的电磁波，引起人眼的颜色感觉不同 [2]  。
 颜色
@@ -162,3 +164,22 @@ https://baike.baidu.com/item/%E5%8F%AF%E8%A7%81%E5%85%89/1241853
 紫
 659~750THz
 455～400nm
+
+
+
+
+Tonino Scale
+115–130
+Cinnamon
+100–115
+Light
+90–100
+City
+80–90
+Medium
+70–80
+Full City
+60–70
+Dark
+50–60
+Heavy

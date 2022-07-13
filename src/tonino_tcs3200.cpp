@@ -38,7 +38,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ------------------------------------------------------------------------------------------
 
-#include <tonino_tcs34725.h>
+#include <tonino_tcs3200.h>
 
 
 // for direct display access
