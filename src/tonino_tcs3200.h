@@ -39,15 +39,15 @@
 // ------------------------------------------------------------------------------------------
 
 
-#ifndef _TONINO_TCS34725_H
-#define _TONINO_TCS34725_H
+#ifndef _TONINO_TCS3200_H
+#define _TONINO_TCS3200_H
 
 
 // frequence counting lib for color sensor, http://www.pjrc.com/teensy/td_libs_FreqCount.html, Version 1.0
 #include <FreqCount.h>
 
 #include <tonino.h>
-#include <tonino_lcd.h>
+//#include <tonino_lcd.h>
 
 
 // sampling rates; x means scan duration of 1/x per color

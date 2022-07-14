@@ -45,11 +45,11 @@
 
 
 // color sensor object
-#define CS_POWER 2
-#define CS_S2    7
-#define CS_S3    6
-#define CS_LED   3
-#define CD_OUT   4
+#define CS_POWER 2  //控制整个通断
+#define CS_S2    7  //控制颜色
+#define CS_S3    6  //控制颜色
+#define CS_LED   3  //控制补光
+#define CD_OUT   4 //数输出的引脚
 
 TCS3200 colorSense = TCS3200(CS_S2, CS_S3, CS_LED, CS_POWER);
 

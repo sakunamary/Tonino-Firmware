@@ -129,6 +129,11 @@ int32_t TCS3200::fitValue(sensorData *sd, float* raw, uint8_t colorMode, boolean
   WRITEDEBUG(SEPARATOR);
   // scale  // scaling data _scale[0]
   int32_t tval = (int32_t)(_scale[0] * v*v*v + _scale[1] * v*v + _scale[2] * v + _scale[3] + 0.5);
+//
+
+
+
+
   WRITEDEBUG("=");
   WRITEDEBUGLN(tval);
   if (raw != NULL) {
