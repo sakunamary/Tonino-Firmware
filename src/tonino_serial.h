@@ -46,13 +46,13 @@
 
 #include <tonino.h>
 #include <tonino_config.h>
-#include <tonino_lcd.h>
+//#include <tonino_lcd.h>
 
 
 class ToninoSerial {
   public:
     // constructor taking pointers to color sensor, display, configuration, and a version string
-    ToninoSerial(TCS3200 *colorSense, LCD *display, ToninoConfig *tConfig, const char *ver);
+    ToninoSerial(TCS3200 *colorSense, ToninoConfig *tConfig, const char *ver);
     ~ToninoSerial(void);
 
     // initializes serial communication and registers functions for serial commands
@@ -140,7 +140,7 @@ class ToninoSerial {
     // object for communication with the color sensor
     static TCS3200 *_colorSense;
     // object for communication with the display
-    static LCD *_display;
+    //static LCD *_display;
     // object for communication with the configuration manager
     static ToninoConfig *_tConfig;
     // version string passed by main program

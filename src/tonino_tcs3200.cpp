@@ -39,17 +39,18 @@
 // ------------------------------------------------------------------------------------------
 
 #include <tonino_tcs3200.h>
+#include "tcs3200.h"        //for esp8266/esp32 .then freqcount.h is not working ,change another lib for esp chips.
 
 
 // for direct display access
-LCD *TCS3200::_display;
+//LCD *TCS3200::_display;
 
 
-TCS3200::TCS3200(uint8_t s2, uint8_t s3, uint8_t led, uint8_t power, LCD *display) :
+TCS3200::TCS3200(uint8_t s2, uint8_t s3, uint8_t led, uint8_t power) :
   _S2(s2), _S3(s3), _LED(led), _POWER(power),
   _readDiv(NORMAL_SAMPLING), _colorMode(COLOR_FULL) {
   
-  _display = display;
+  //_display = display;
   
   #if NR_CAL_VALUES == 2
     _cal[0] = DEFAULT_CAL_0;

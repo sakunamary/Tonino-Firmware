@@ -44,7 +44,7 @@
 
 
 // frequence counting lib for color sensor, http://www.pjrc.com/teensy/td_libs_FreqCount.html, Version 1.0
-#include <FreqCount.h>
+//#include <FreqCount.h>
 
 #include <tonino.h>
 //#include <tonino_lcd.h>
@@ -116,7 +116,7 @@ typedef struct {
 class TCS3200 {
   public:
     // constructor taking all control pins and display
-    TCS3200(uint8_t s2, uint8_t s3, uint8_t led, uint8_t power, LCD *display);
+    TCS3200(uint8_t s2, uint8_t s3, uint8_t led, uint8_t power);
     ~TCS3200(void);
 
     // configures pins and calls sensorOff()
@@ -130,7 +130,7 @@ class TCS3200 {
     // with the T-value at T_IDX
     // if ledon is true, LEDs are switched on during measurement
     // if removeExtLight is true, additional 'dark' measurement is done
-    int32_t scan(float *raw = NULL, bool displayAnim = false, sensorData *sd = NULL, boolean ledon = true, boolean removeExtLight = false, boolean *averaged = NULL);
+    int32_t scan(float *raw = NULL, sensorData *sd = NULL, boolean ledon = true, boolean removeExtLight = false, boolean *averaged = NULL);
     
     // switch sensor completely off
     void sensorOff();
@@ -163,7 +163,7 @@ class TCS3200 {
       
   private:
     // object for communication with the display
-    static LCD *_display;
+   // static LCD *_display;
 
     // pin to power the whole sensor board
     uint8_t _POWER;
