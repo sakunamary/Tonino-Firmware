@@ -99,25 +99,25 @@ boolean calibrate() {
     // wait for other plate
     uint16_t delayTillUpTest = tConfig.getDelayTillUpTest() * 100;
     while (true) {
-      display.calibration2();
+     // display.calibration2();
 
       // wait till can is lifted and put down again
       while (colorSense.isDark()) {
         delay(delayTillUpTest);
         if (checkCommands()) return false;
       }
-      display.up();
+      //display.up();
       while (colorSense.isLight()) {
         delay(delayTillUpTest);
         if (checkCommands()) return false;
       }
-      display.calibration2();
+     // display.calibration2();
       delay(500);
 
       // scan plate 2
       colorSense.scan(NULL, false, &sd);
       if (checkCommands()) return false;
-      display.calibration2();
+      //display.calibration2();
       delay(500);
       if (checkCommands()) return false;
 
@@ -170,8 +170,8 @@ inline void scanAndDisplay(float* lastRaw) {
   int32_t tval = colorSense.scan(lastRaw, false, NULL, true, false, &averaged);
  
 
-  displayNum(tval);
-  display.averaged(averaged); // display the averaged indicator
+  //displayNum(tval);
+  //display.averaged(averaged); // display the averaged indicator
 }
 
 
@@ -200,16 +200,16 @@ void setup() {
   // check whether we are calibrating (detect first calibration plate)
   if (colorSense.isDark()) {
     if (tConfig.getCheckCalInit() && colorSense.isCalibrating() == LOW_PLATE) {
-      display.clear();
+      //display.clear();
       if (calibrate()) {
-        display.done();
+        //display.done();
       }
     } else {
       // no calibration plate detected, directly make first scan
       scanAndDisplay(NULL);
     }
   } else {
-    display.clear();
+  //  display.clear();
   }
 
 

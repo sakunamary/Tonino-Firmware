@@ -146,7 +146,7 @@ int32_t TCS3200::fitValue(sensorData *sd, float* raw, uint8_t colorMode, boolean
 // makes the actual measurement with LEDs on
 // according to current sampling and color mode settings
 // displayAnim if true, the display shows a "progress bar"
-int32_t TCS3200::scan(float *raw, bool displayAnim, sensorData *outersd, boolean ledon, boolean removeExtLight, boolean *averaged) {
+int32_t TCS3200::scan(float *raw, boolean displayAnim, sensorData *outersd, boolean ledon, boolean removeExtLight, boolean *averaged) {
   uint8_t animPos = 0;
   sensorData sd;
   for (uint8_t i = 0; i < 5; ++i) {
@@ -266,11 +266,11 @@ uint8_t TCS3200::isCalibrating() {
   WRITEDEBUGLN("isCalib:");
   uint8_t samplingBackup = _readDiv;
   _readDiv = QUICK_SAMPLING;
-
+/*
   if (_display != NULL) {
     _display->clear();
   }
-
+*/
   digitalWrite(_POWER, HIGH);
   digitalWrite(_LED, HIGH);
   delay(SENSOR_ON_DELAY);
