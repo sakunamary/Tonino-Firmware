@@ -1,0 +1,87 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "d:/github/Tonino-Firmware/include",
+                "d:/github/Tonino-Firmware/src",
+                "d:/github/Tonino-Firmware/lib/Tonino",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/Wire",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/Wire/utility",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/E2PROM",
+                "d:/github/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/SerialCommand",
+                "d:/github/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/FreqCount",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/cores/lgt8f",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/variants/lgt8fx8p48",
+                "d:/github/Tonino-Firmware/lib/SerialCommand",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/LarduinoISP",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/PMU",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/Rtc_Pcf8563",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/SPI/src",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/SoftwareSerial",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/VUsbDevice",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/VUsbKeyboard",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/VUsbMouse",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/WDT",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/differential_amplifier",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/lgt328p",
+                "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/usbdrv",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "d:/github/Tonino-Firmware/include",
+                    "d:/github/Tonino-Firmware/src",
+                    "d:/github/Tonino-Firmware/lib/Tonino",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/Wire",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/Wire/utility",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/E2PROM",
+                    "d:/github/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/SerialCommand",
+                    "d:/github/Tonino-Firmware/.pio/libdeps/lgt8f328p-LQFP48/FreqCount",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/cores/lgt8f",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/variants/lgt8fx8p48",
+                    "d:/github/Tonino-Firmware/lib/SerialCommand",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/LarduinoISP",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/PMU",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/Rtc_Pcf8563",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/SPI/src",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/SoftwareSerial",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/VUsbDevice",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/VUsbKeyboard",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/VUsbMouse",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/WDT",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/differential_amplifier",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/lgt328p",
+                    "C:/Users/Administrator/.platformio/packages/framework-lgt8fx/libraries/usbdrv",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60101",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO_AVR_LARDU_328P",
+                "AVR_LARDU_328E",
+                "F_CPU=32000000L",
+                "CLOCK_SOURCE=1",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO_ARCH_LGT",
+                "ARDUINO=10812",
+                ""
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/Users/Administrator/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerArgs": [
+                "-mmcu=atmega328p",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
