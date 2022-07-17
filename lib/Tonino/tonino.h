@@ -53,6 +53,11 @@
  #include "WProgram.h"
 #endif
 
+//select a  segment LCD control chip 
+#define LCD_I2C_ADD  0x70  //HT16K33  adfruit segment 
+//#define LCD_I2C_ADD  0x70  //TM1637   
+
+
 // low power mode if no action during this time
 // DIM < SLEEP < POWERDOWN
 #define TIME_TILL_DIM        120000 //  2 minutes = 120000

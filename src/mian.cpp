@@ -288,7 +288,7 @@ void setup() {
   checkCommands();
 
   // LCD init
-  display.init(0x70);
+  display.init(LCD_I2C_ADD);
   display.clear();
 
   // color sensor init
