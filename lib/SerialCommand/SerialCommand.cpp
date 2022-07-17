@@ -71,7 +71,7 @@ void SerialCommand::setDefaultHandler(void (*function)(const char *)) {
  * buffer for a prefix command, and calls handlers setup by addCommand() member
  */
 boolean SerialCommand::readSerial() {
-  boolean matched = false;
+ boolean matched = false;
   while (Serial.available() > 0) {
     char inChar = Serial.read();   // Read single available character, there may be more waiting
     #ifdef SERIALCOMMAND_DEBUG
@@ -86,6 +86,7 @@ boolean SerialCommand::readSerial() {
 
       char *command = strtok_r(buffer, delim, &last);   // Search for command at start of buffer
       if (command != NULL) {
+        boolean matched = false;
         for (int i = 0; i < commandCount; i++) {
           #ifdef SERIALCOMMAND_DEBUG
             Serial.print("Comparing [");
@@ -125,7 +126,7 @@ boolean SerialCommand::readSerial() {
       }
     }
   }
-	return matched;
+  return matched;
 }
 
 /*
