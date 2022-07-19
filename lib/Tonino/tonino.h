@@ -35,7 +35,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ------------------------------------------------------------------------------------------
 
-#define DODEBUG true 
+#define DODEBUG false 
 // values will be stored in EEPROM value+1 timez; set to 0 for no redundancy
 // pay attention that EEPROM_START_ADDRESS + (EEPROM_REDUNDANT_CYCLES+1)*EEPROM_SIZE
 // is still within EEPROM limits
@@ -61,14 +61,14 @@
 // low power mode if no action during this time
 // DIM < SLEEP < POWERDOWN
 #define TIME_TILL_DIM        120000 //  2 minutes = 120000
-#define TIME_TILL_SLEEP      600000 // 10 minutes = 600000
-#define TIME_TILL_POWERDOWN 7200000 //  2 hours =  7200000
+#define TIME_TILL_SLEEP      300000 // 5 minutes = 300000
+#define TIME_TILL_POWERDOWN 1800000 //  30 minutes =  1800000
 
 // default values for parameters
 #define DEFAULT_SAMPLING SLOW_SAMPLING
 #define DEFAULT_COLORS (COLOR_RED|COLOR_BLUE)
 #define DEFAULT_DELAYTILLUPTEST 10 // in 100ms, i.e. 10 means 1 second
-#define DEFAULT_BRIGHTNESS 10
+#define DEFAULT_BRIGHTNESS 5
 #define DEFAULT_DOCALINIT true
 #define DEFAULT_SCALE_0 0.0
 #define DEFAULT_SCALE_1 0.0
