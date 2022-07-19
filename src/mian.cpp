@@ -77,9 +77,13 @@ LCD display = LCD();
 
 // color sensor object
 #define CS_POWER 2
-#define CS_S2    7
-#define CS_S3    6
+#define CS_S2    6
+#define CS_S3    7
 #define CS_LED   3
+#define CS_S0    9  //put your S0 pin here (mine is D9)
+#define CS_S1    10 //put your S1 pin here (mine is D10)
+
+
 TCS3200 colorSense = TCS3200(CS_S2, CS_S3, CS_LED, CS_POWER, &display);
 
 // object for all parameters
@@ -292,6 +296,13 @@ void setup() {
   display.clear();
 
   // color sensor init
+  //***r0bin hack, before calling colorSense.init()
+  pinMode (CS_S0,OUTPUT);
+  pinMode (CS_S1,OUTPUT);
+  // Setting frequency scaling to 20%
+  digitalWrite(CS_S0,HIGH);
+  digitalWrite(CS_S1,LOW);
+  // call now initialize  
   colorSense.init();
 
   // read parameters from EEPROM or write defaults if not available
