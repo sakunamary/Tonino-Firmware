@@ -297,11 +297,11 @@ void setup() {
 
   // color sensor init
   //***r0bin hack, before calling colorSense.init()
-  pinMode (CS_S0,OUTPUT);
-  pinMode (CS_S1,OUTPUT);
+  ///pinMode (CS_S0,OUTPUT);
+  //pinMode (CS_S1,OUTPUT);
   // Setting frequency scaling to 20%
-  digitalWrite(CS_S0,HIGH);
-  digitalWrite(CS_S1,LOW);
+  //digitalWrite(CS_S0,HIGH);
+  //digitalWrite(CS_S1,LOW);
   // call now initialize  
   colorSense.init();
 
