@@ -333,7 +333,7 @@ uint32_t TCS3200::readSingle(void) {
   while (!FreqCount.available());   // wait
   FreqCount.end();                  // stop
 
-  return(FreqCount.read() * _readDiv)/30; //fix issue https://github.com/myTonino/Tonino-Firmware/issues/2
+  return ((FreqCount.read() * _readDiv)/30); //fix issue https://github.com/myTonino/Tonino-Firmware/issues/2
 }
 
 // set the sensor color filter
