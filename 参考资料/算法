@@ -1,94 +1,4 @@
 
-// called when detected first calibration plate with quick scan
-boolean calibrate() {
-  sensorData sd;
-  
-  display.calibration1();
-  WRITEDEBUGLN("Cal.");
-  delay(500);
-  
-  // scan plate 1
-  colorSense.scan(NULL, false, &sd);
-  if (checkCommands()) return false;
-  display.calibration1();
-  delay(500);
-  if (checkCommands()) return false;
-
-  float redavg = sd.value[RED_IDX];
-  float blueavg = sd.value[BLUE_IDX];
-  
-  if ((abs(redavg - LOW_RED) < RED_RANGE_LOW) && (abs(blueavg - LOW_BLUE) < BLUE_RANGE_LOW)) {
-
-    float rb_low = redavg / blueavg;
-
-    WRITEDEBUG(redavg);
-    WRITEDEBUG("/");
-    WRITEDEBUG(blueavg);
-    WRITEDEBUG("=");
-    WRITEDEBUGF(rb_low, 5);
-    WRITEDEBUG("; ");
-
-    // wait for other plate
-    uint16_t delayTillUpTest = tConfig.getDelayTillUpTest() * 100;
-    while (true) {
-      display.calibration2();
-
-      // wait till can is lifted and put down again
-      while (colorSense.isDark()) {
-        delay(delayTillUpTest);
-        if (checkCommands()) return false;
-      }
-      display.up();
-      while (colorSense.isLight()) {
-        delay(delayTillUpTest);
-        if (checkCommands()) return false;
-      }
-      display.calibration2();
-      delay(500);
-
-      // scan plate 2
-      colorSense.scan(NULL, false, &sd);
-      if (checkCommands()) return false;
-      display.calibration2();
-      delay(500);
-      if (checkCommands()) return false;
-
-      redavg = sd.value[RED_IDX];
-      blueavg = sd.value[BLUE_IDX];
-      float rb_high = redavg / blueavg;
-
-      float cal[2];
-      cal[0] = (HIGH_TARGET - LOW_TARGET) / (rb_high - rb_low);
-      cal[1] = LOW_TARGET - cal[0]*rb_low;
-
-      WRITEDEBUG(redavg);
-      WRITEDEBUG("/");
-      WRITEDEBUG(blueavg);
-      WRITEDEBUG("=");
-      WRITEDEBUGF(rb_high, 5);
-      
-      WRITEDEBUG("=>");
-      WRITEDEBUGF(cal[0], 5);
-      WRITEDEBUG(",");
-      WRITEDEBUGLNF(cal[1], 5);
-
-      if (checkCommands()) return false;
-
-      tConfig.setCalibration(cal);
-      delay(10);
-      return true;
-    }
-
-  } else {
-    // could not detect first plate even though quick check thought so - error and continue
-    display.error();
-    delay(3000);
-    return false;
-  }
-}
-
-
-  主要是红跟绿色构成棕色
 
 
 
@@ -124,17 +34,20 @@ typedef struct {
   } sensorData;
   
 
-#define   WHITE_IDX   0  // 'Clear' filter selection
+#define   WHITE_IDX   0  // 'Clear' filter selection //CLEAR的数据值，白平衡的数据，用于校正色差
 #define   RED_IDX     1   
 #define   GREEN_IDX   2
 #define   BLUE_IDX    3
-#define   T_IDX       4  // index for storing T-value
+#define   T_IDX       4  // index for storing T-value //t-value 是 tonino 数值,计算完整个值后的综合值
 
 
 
+主要是红跟绿色构成棕色
 
 可见光色散谱
 https://baike.baidu.com/item/%E5%8F%AF%E8%A7%81%E5%85%89/1241853
+
+颜色代码 查询网站：http://www.59178.com/tools/sejie.asp
 
 
 频率不同的电磁波，引起人眼的颜色感觉不同 [2]  。
@@ -162,3 +75,22 @@ https://baike.baidu.com/item/%E5%8F%AF%E8%A7%81%E5%85%89/1241853
 紫
 659~750THz
 455～400nm
+
+
+
+
+Tonino Scale
+115–130
+Cinnamon
+100–115
+Light
+90–100
+City
+80–90
+Medium
+70–80
+Full City
+60–70
+Dark
+50–60
+Heavy

@@ -40,14 +40,14 @@
 
 SerialCommand ToninoSerial::_sCmd;
 TCS3200 *ToninoSerial::_colorSense;
-LCD *ToninoSerial::_display;
+//LCD *ToninoSerial::_display;
 ToninoConfig *ToninoSerial::_tConfig;
 const char *ToninoSerial::_version;
 const uint32_t NOTSET = 4242424242;
 
-ToninoSerial::ToninoSerial(TCS3200 *colorSense, LCD *display, ToninoConfig *tConfig, const char *ver) {
+ToninoSerial::ToninoSerial(TCS3200 *colorSense, ToninoConfig *tConfig, const char *ver) {
   _colorSense = colorSense;
-  _display = display;
+  //_display = display;
   _tConfig = tConfig;
   _version = ver;
 }
@@ -124,7 +124,7 @@ void ToninoSerial::getVersion() {
   Serial.print(_version);
   Serial.print("\n");
   
-  _display->connected();
+  //_display->connected();
 }
 
 // make a measurement and print result to serial (and LCD)
@@ -135,12 +135,13 @@ void ToninoSerial::scan() {
   Serial.print("SCAN:");
   Serial.print(val);
   Serial.print("\n");
-
+/*
   if (val < 0 || val > 9999) {
     _display->line();
   } else {
     _display->snake(val);
   }
+  */
 }
 
 // make a measurement and print calibrated, w/b value to serial 
@@ -152,12 +153,13 @@ void ToninoSerial::i_scan() {
   Serial.print("I_SCAN:");
   Serial.print(ratio, 6);
   Serial.print("\n");
-
+/*
   if (val < -999 || val > 9999) {
     _display->line();
   } else {
     _display->printNumber(val);
   }
+  */
 }
 
 // make a measurement and print raw color values to serial 
@@ -172,12 +174,14 @@ void ToninoSerial::ii_scan() {
     Serial.print(SEPARATOR);
   }
   Serial.print("\n");
-
+/*
   if (val < -999 || val > 9999) {
     _display->line();
   } else {
     _display->printNumber(val);
   }
+*/
+
 }
 
 // make a measurement with LEDs switched off and print raw color values to serial 
@@ -293,7 +297,7 @@ void ToninoSerial::setBrightness() {
 // print current scaling data to serial
 void ToninoSerial::getBrightness() {
   Serial.print("GETBRIGHTNESS:");
-  Serial.print(_display->getBrightness());
+  //Serial.print(_display->getBrightness());
   Serial.print("\n");
 }
 

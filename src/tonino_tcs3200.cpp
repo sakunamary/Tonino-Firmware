@@ -38,18 +38,19 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ------------------------------------------------------------------------------------------
 
-#include <tonino_tcs34725.h>
+#include <tonino_tcs3200.h>
+#include "tcs3200.h"        //for esp8266/esp32 .then freqcount.h is not working ,change another lib for esp chips.
 
 
 // for direct display access
-LCD *TCS3200::_display;
+//LCD *TCS3200::_display;
 
 
-TCS3200::TCS3200(uint8_t s2, uint8_t s3, uint8_t led, uint8_t power, LCD *display) :
+TCS3200::TCS3200(uint8_t s2, uint8_t s3, uint8_t led, uint8_t power) :
   _S2(s2), _S3(s3), _LED(led), _POWER(power),
   _readDiv(NORMAL_SAMPLING), _colorMode(COLOR_FULL) {
   
-  _display = display;
+  //_display = display;
   
   #if NR_CAL_VALUES == 2
     _cal[0] = DEFAULT_CAL_0;
@@ -129,6 +130,11 @@ int32_t TCS3200::fitValue(sensorData *sd, float* raw, uint8_t colorMode, boolean
   WRITEDEBUG(SEPARATOR);
   // scale  // scaling data _scale[0]
   int32_t tval = (int32_t)(_scale[0] * v*v*v + _scale[1] * v*v + _scale[2] * v + _scale[3] + 0.5);
+//
+
+
+
+
   WRITEDEBUG("=");
   WRITEDEBUGLN(tval);
   if (raw != NULL) {
@@ -140,7 +146,7 @@ int32_t TCS3200::fitValue(sensorData *sd, float* raw, uint8_t colorMode, boolean
 // makes the actual measurement with LEDs on
 // according to current sampling and color mode settings
 // displayAnim if true, the display shows a "progress bar"
-int32_t TCS3200::scan(float *raw, bool displayAnim, sensorData *outersd, boolean ledon, boolean removeExtLight, boolean *averaged) {
+int32_t TCS3200::scan(float *raw, boolean displayAnim, sensorData *outersd, boolean ledon, boolean removeExtLight, boolean *averaged) {
   uint8_t animPos = 0;
   sensorData sd;
   for (uint8_t i = 0; i < 5; ++i) {
@@ -260,11 +266,11 @@ uint8_t TCS3200::isCalibrating() {
   WRITEDEBUGLN("isCalib:");
   uint8_t samplingBackup = _readDiv;
   _readDiv = QUICK_SAMPLING;
-
+/*
   if (_display != NULL) {
     _display->clear();
   }
-
+*/
   digitalWrite(_POWER, HIGH);
   digitalWrite(_LED, HIGH);
   delay(SENSOR_ON_DELAY);

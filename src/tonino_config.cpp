@@ -39,8 +39,8 @@
 
 
 // constructor needs color sensor object for passing parameters
-ToninoConfig::ToninoConfig(TCS3200 *c, LCD *d) :
-  _colorSense(c), _display(d), _doInitCal(true) {
+ToninoConfig::ToninoConfig(TCS3200 *c) :
+  _colorSense(c),  _doInitCal(true) {
   // empty
 }
 
@@ -114,17 +114,27 @@ void ToninoConfig::setSampling(uint8_t sampling) {
 
 // sets and stores the display brightness to EEPROM (0-15, 15=max brightness)
 void ToninoConfig::setBrightness(uint8_t b) {
+checkedEepromWrite(EEPROM_BRIGHTNESS_ADDRESS, b);
+/*
   if (_display != NULL) {
 		_display->setBrightness(b);
 		checkedEepromWrite(EEPROM_BRIGHTNESS_ADDRESS, b);
 	}
+
+*/
+
 }
 
 // gets the display brightness from EEPROM (0-15, 15=max brightness)
 uint8_t ToninoConfig::getBrightness() {
+
+
+ /*   
   if (_display != NULL) {
 		return _display->getBrightness();
 	}
+
+    */
 	return 0;
 }
 

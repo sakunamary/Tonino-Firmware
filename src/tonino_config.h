@@ -69,7 +69,8 @@ union floatByteData_t {
 class ToninoConfig {
   public:
     // constructor needs color sensor object for passing parameters
-    ToninoConfig(TCS3200 *colorSense, LCD *display);
+    ToninoConfig(TCS3200 *colorSense);
+    //ToninoConfig(TCS3200 *colorSense, LCD *display);
     ~ToninoConfig(void);
 
     // look if EEPROM has been used and load values, or store defaults otherwise
@@ -112,7 +113,7 @@ class ToninoConfig {
 
   private:
     TCS3200 *_colorSense;
-    LCD *_display;
+    //LCD *_display;
     
     // returns true if the value is not a valid float
     static bool isInvalidNumber(float f);
