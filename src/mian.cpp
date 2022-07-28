@@ -77,7 +77,7 @@ LCD display = LCD();
 
 // color sensor object
 #define CS_POWER 2
-#define CS_S2    6
+#define CS_S2    6 
 #define CS_S3    7
 #define CS_LED   3
 #define CS_S0    9  //put your S0 pin here (mine is D9)
