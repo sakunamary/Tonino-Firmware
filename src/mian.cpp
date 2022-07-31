@@ -54,6 +54,7 @@
 #include <tonino_tcs3200.h>
 #include <tonino_serial.h>
 #include <tonino_config.h>
+#include <PMU.h>
 
 // lib that calls method according to serial input
 // slightly adapted from
@@ -66,11 +67,12 @@
 #include <FreqCount.h>
 // lib to access EEPROM, built-in, see http://arduino.cc/en/Reference/EEPROM
 #include <EEPROM.h>
-
+/*
 // low power library, built-in, see http://playground.arduino.cc/Learning/arduinoSleepCode
 #include <avr/power.h>  
 // low power library, https://github.com/rocketscream/Low-Power, Version 1.30
 #include <LowPower.h>
+*/
 
 // LCD object
 LCD display = LCD();
@@ -108,8 +110,12 @@ inline uint32_t checkLowPowerMode(bool isLight, uint32_t lastTimestamp) {
     int16_t loopsTillPowerDown = (TIME_TILL_POWERDOWN - TIME_TILL_SLEEP) / 4000 + 1;
   
     while (true) {
+
+        /*
       LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
-  
+      switch to LGT8F328P 
+  */
+    PMU.sleep(PM_POFFS0, SLEEP_4S);  
       // do we receive serial input during powerDown?
       if (Serial.available() > 0 || 
          (!isLight && colorSense.isLight()) || (isLight && colorSense.isDark())) {
@@ -121,7 +127,12 @@ inline uint32_t checkLowPowerMode(bool isLight, uint32_t lastTimestamp) {
       if (--loopsTillPowerDown <= 0) {
         WRITEDEBUGLN("power down");
         delay(500);
+        /*
         LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
+       switch to LGT8F328P        
+        */
+    PMU.sleep(PM_POFFS0);  
+
       }
     }
     display.line();
@@ -275,10 +286,19 @@ void setup() {
   // (note A6 and A7 do not have those buffers)
   DIDR0 = DIDR0 | B00111111;
 
+/*
   // disable unsused components
   power_adc_disable(); // disable unused analog digital converter needed only for analogRead()
   power_spi_disable(); // disable unused Serial Peripheral Interface
   SPCR = 0;
+ switch to LGT8f328P 
+  */
+ //TBC
+    //PMU.adc_disable(); disable unused analog digital converter needed only for analogRead()
+     ADCSRA &= ~(1 << ADEN);     
+    //PMU.spi_disable();
+    
+
   // ---- end low energy configuration
     
   // to visualize that the Arduino is running
