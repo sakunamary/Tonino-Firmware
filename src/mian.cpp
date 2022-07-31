@@ -54,7 +54,7 @@
 #include <tonino_tcs3200.h>
 #include <tonino_serial.h>
 #include <tonino_config.h>
-#include <PMU.h>
+
 
 // lib that calls method according to serial input
 // slightly adapted from
@@ -67,12 +67,21 @@
 #include <FreqCount.h>
 // lib to access EEPROM, built-in, see http://arduino.cc/en/Reference/EEPROM
 #include <EEPROM.h>
-/*
+
+
+
+//set lowpower
+#if MCU == LGT8F
+// low power library, built-in, for LGT8F
+#include <PMU.h>
+#elif MCU == ARDUINO
 // low power library, built-in, see http://playground.arduino.cc/Learning/arduinoSleepCode
 #include <avr/power.h>  
 // low power library, https://github.com/rocketscream/Low-Power, Version 1.30
 #include <LowPower.h>
-*/
+#endif
+
+
 
 // LCD object
 LCD display = LCD();
@@ -110,12 +119,13 @@ inline uint32_t checkLowPowerMode(bool isLight, uint32_t lastTimestamp) {
     int16_t loopsTillPowerDown = (TIME_TILL_POWERDOWN - TIME_TILL_SLEEP) / 4000 + 1;
   
     while (true) {
-
-        /*
-      LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
-      switch to LGT8F328P 
-  */
+#if MCU == LGT8F
     PMU.sleep(PM_POFFS0, SLEEP_4S);  
+#elif MCU == ARDUINO 
+      LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
+#endif
+
+
       // do we receive serial input during powerDown?
       if (Serial.available() > 0 || 
          (!isLight && colorSense.isLight()) || (isLight && colorSense.isDark())) {
@@ -127,12 +137,12 @@ inline uint32_t checkLowPowerMode(bool isLight, uint32_t lastTimestamp) {
       if (--loopsTillPowerDown <= 0) {
         WRITEDEBUGLN("power down");
         delay(500);
-        /*
-        LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
-       switch to LGT8F328P        
-        */
-    PMU.sleep(PM_POFFS0);  
 
+#if MCU == LGT8F
+        PMU.sleep(PM_POFFS0);  
+#elif MCU == ARDUINO 
+        LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
+#endif
       }
     }
     display.line();

@@ -53,6 +53,14 @@
  #include "WProgram.h"
 #endif
 
+
+
+
+//select a MCU //uncomment to get
+#define MCU LGT8F  //LGT8f328p a very very very cheap clone ATmega328P
+//#define MCU ARDUINO //arduino nano with ATmega328p
+
+
 //select a  segment LCD control chip 
 #define LCD_I2C_ADD  0x70  //HT16K33  adfruit segment 
 //#define LCD_I2C_ADD  0x70  //TM1637   
@@ -62,7 +70,7 @@
 // DIM < SLEEP < POWERDOWN
 #define TIME_TILL_DIM        120000 //  2 minutes = 120000
 #define TIME_TILL_SLEEP      300000 // 5 minutes = 300000
-#define TIME_TILL_POWERDOWN 1800000 //  30 minutes =  1800000
+#define TIME_TILL_POWERDOWN 600000 //  10 minutes =  1800000
 
 // default values for parameters
 #define DEFAULT_SAMPLING SLOW_SAMPLING
