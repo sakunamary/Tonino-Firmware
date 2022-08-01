@@ -81,8 +81,6 @@
 #include <LowPower.h>
 #endif
 
-
-
 // LCD object
 LCD display = LCD();
 
@@ -120,9 +118,9 @@ inline uint32_t checkLowPowerMode(bool isLight, uint32_t lastTimestamp) {
   
     while (true) {
 #if MCU == LGT8F
-    PMU.sleep(PM_POFFS0, SLEEP_4S);  
+        PMU.sleep(PM_POFFS0, SLEEP_4S);  
 #elif MCU == ARDUINO 
-      LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
+        LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);  
 #endif
 
 
