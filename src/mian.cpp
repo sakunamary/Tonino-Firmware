@@ -89,8 +89,8 @@ LCD display = LCD();
 #define CS_S2    6 
 #define CS_S3    7
 #define CS_LED   3
-#define CS_S0    9  //put your S0 pin here (mine is D9)
-#define CS_S1    10 //put your S1 pin here (mine is D10)
+#define CS_S0    8  //put your S0 pin here (mine is D9)
+#define CS_S1    9 //put your S1 pin here (mine is D10)
 
 
 TCS3200 colorSense = TCS3200(CS_S2, CS_S3, CS_LED, CS_POWER, &display);
