@@ -276,7 +276,7 @@ inline void scanAndDisplay(float* lastRaw) {
   // 4: true: switch on LEDs
   // 5: false: no explicit external light removal
   // 6: averaged: return flag that indicates that result got averaged
-  int32_t tval = colorSense.scan(lastRaw, false, NULL, true, false, &averaged);
+  int32_t tval = colorSense.scan(lastRaw, true, NULL, true, false, &averaged);
  
 
   displayNum(tval);
@@ -310,8 +310,8 @@ void setup() {
   // ---- end low energy configuration
     
   // to visualize that the Arduino is running
-  pinMode (13, OUTPUT);    // changed as per below
-  digitalWrite(13, HIGH);
+  //pinMode (13, OUTPUT);    // changed as per below
+  //digitalWrite(13, HIGH);
 
   // initialize serial communication
   tSerial.init(115200);
