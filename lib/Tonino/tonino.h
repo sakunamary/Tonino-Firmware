@@ -35,7 +35,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ------------------------------------------------------------------------------------------
 
-#define DODEBUG true 
+#define DODEBUG false 
 // values will be stored in EEPROM value+1 timez; set to 0 for no redundancy
 // pay attention that EEPROM_START_ADDRESS + (EEPROM_REDUNDANT_CYCLES+1)*EEPROM_SIZE
 // is still within EEPROM limits
@@ -81,7 +81,7 @@
 #define DEFAULT_SCALE_0 0.0
 #define DEFAULT_SCALE_1 0.0
 #define DEFAULT_SCALE_2 102.2727273
-#define DEFAULT_SCALE_3 -128.4090909
+#define DEFAULT_SCALE_3 -178.4090909  // -128.4090909 
 #define DEFAULT_CAL_0 1.011949
 #define DEFAULT_CAL_1 -0.094599
 
