@@ -70,7 +70,7 @@
 // DIM < SLEEP < POWERDOWN
 #define TIME_TILL_DIM        120000 //  2 minutes = 120000
 #define TIME_TILL_SLEEP      300000 // 5 minutes = 300000
-#define TIME_TILL_POWERDOWN 600000 //  10 minutes =  1800000
+#define TIME_TILL_POWERDOWN 300000 //  10 minutes =  1800000
 
 // default values for parameters
 #define DEFAULT_SAMPLING SLOW_SAMPLING
