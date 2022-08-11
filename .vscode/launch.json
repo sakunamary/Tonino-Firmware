@@ -12,31 +12,31 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug",
-            "executable": "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/.pio/build/LGT8f_mac/firmware.elf",
-            "projectEnvName": "LGT8f_mac",
-            "toolchainBinDir": "/usr/local/bin",
+            "executable": "d:/github/Tonino-Firmware/.pio/build/LGT8f_avrisp/firmware.elf",
+            "projectEnvName": "LGT8f_avrisp",
+            "toolchainBinDir": "",
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": {
                 "type": "PlatformIO",
-                "task": "Pre-Debug (LGT8f_mac)"
+                "task": "Pre-Debug (LGT8f_avrisp)"
             }
         },
         {
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
-            "executable": "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/.pio/build/LGT8f_mac/firmware.elf",
-            "projectEnvName": "LGT8f_mac",
-            "toolchainBinDir": "/usr/local/bin",
+            "executable": "d:/github/Tonino-Firmware/.pio/build/LGT8f_avrisp/firmware.elf",
+            "projectEnvName": "LGT8f_avrisp",
+            "toolchainBinDir": "",
             "internalConsoleOptions": "openOnSessionStart"
         },
         {
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (without uploading)",
-            "executable": "/Users/xiaoning/Documents/GitHub/Tonino-Firmware/.pio/build/LGT8f_mac/firmware.elf",
-            "projectEnvName": "LGT8f_mac",
-            "toolchainBinDir": "/usr/local/bin",
+            "executable": "d:/github/Tonino-Firmware/.pio/build/LGT8f_avrisp/firmware.elf",
+            "projectEnvName": "LGT8f_avrisp",
+            "toolchainBinDir": "",
             "internalConsoleOptions": "openOnSessionStart",
             "loadMode": "manual"
         }
