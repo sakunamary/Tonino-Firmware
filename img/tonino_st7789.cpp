@@ -41,13 +41,6 @@
 #include <tonino_lcd.h>
 
 
-// I2C address of the display
-uint8_t LCD::i2cAddr;
-
-// LCD driver needs 8*2 bytes
-uint16_t LCD::displaybuffer[8]; 
-
-
 
 LCD::LCD() {
   // empty
@@ -119,7 +112,7 @@ void LCD::hi() {
 
 // display the letters "up"
 void LCD::up() {
-
+//显示 举高的GIF图片
 }
 
 // display the letters "PC"
@@ -130,7 +123,7 @@ void LCD::connected() {
 
 // display the letters "EEEE"
 void LCD::error() {
-
+//显示错误图片
 
 }
 
@@ -149,47 +142,12 @@ void LCD::averaged(boolean dot) {
 // shows a rotating circle; total time =repeat*timePerCircle
 void LCD::circle(uint8_t repeat, uint16_t timePerCircle) {
   int16_t dtime = timePerCircle / 12;
-
+//转菊花图片
 }
 
 // displays a number; effect: each digit sequentially counts from 0
 void LCD::dropNumber(uint16_t num) {
-  if (num > 9999) {
-    error();
-    return;
-  }
-  uint8_t dig[5];
-  uint8_t startLed = 0;
-  
-  dig[0] = num / 1000;
-  num %= 1000;
-  dig[1] = num / 100;
-  num %= 100;
-  dig[3] = num / 10;
-  dig[4] = num % 10;
-  if (dig[0] == 0) {
-    startLed++;
-    if (dig[1] == 0) {
-      startLed += 2;
-      if (dig[3] == 0) {
-        startLed++;
-      }
-    }
-  }
-
-  clear();
-  
-  for (int led = startLed; led < 5; ++led) {
-    if (led == 2) {
-      continue;
-    }
-    uint8_t cnt = 0;
-    while (cnt <= dig[led]) {
-      writeDigitNum(led, cnt++);
-      writeDisplay();
-      delay(50);
-    }
-  }
+ 
 }
 
 // displays a number; effect: quickly count from 0 to num
@@ -206,25 +164,7 @@ void LCD::countToNumber(uint16_t num) {
 
 // displays a number; effect: quickly count down from 888
 void LCD::countDownToNumber(uint16_t num) {
-  if (num > 9999) {
-    error();
-    return;
-  }
-  if (num > 888) {
-    if (num > 8888) {
-      for (int16_t i = 9999; i >= num; --i) {
-        printNumber(i);
-      }
-    } else {
-      for (int16_t i = 8888; i >= num; --i) {
-        printNumber(i);
-      }
-    }
-  } else {
-    for (int16_t i = 888; i >= num; --i) {
-      printNumber(i);
-    }
-  }
+ 
 }
 
 // displays a number; effect: start with 8888, remove all segments until num appears
@@ -345,120 +285,44 @@ void LCD::approx(uint16_t num) {
 
 // displays a number; effect: like a snake leaving behind the num
 void LCD::snake(uint16_t num) {
-  uint8_t dig[5];
-  int16_t dtime = 10;
-  uint8_t curDig = 0;
-
-  calcDigits(dig, num);
-  clear();
   
-  for (int led = 0; led < 5; ++led) {
-    if (led == 2) {
-      continue;
-    }
-  
-    if (led == 0) {
-      writeDigitRaw(led, snaketable[0]);
-      writeDisplay();
-      delay(dtime);
-    } else {
-      // correct last digit element from previous led
-      int prevLed = (led == 3) ? 1 : led -1;
-      curDig |= (dig[prevLed] & snaketable[6]);
-      writeDigitRaw(prevLed, curDig);
-      writeDigitRaw(led, snaketable[0]);
-      writeDisplay();
-      delay(dtime);
-      curDig = 0;
-    }
-    for (int digit = 1; digit < 7; ++digit) {
-      // add last element if dig has it
-      curDig |= (dig[led] & snaketable[digit-1]);
-      writeDigitRaw(led, snaketable[digit] | curDig);
-      writeDisplay();
-      delay(dtime);
-    }
-  }
-  // correct last digit element from last led
-  curDig |= (dig[4] & snaketable[6]);
-  writeDigitRaw(4, curDig | 1<<7);
-  writeDisplay();
 }
 
 // shows 'CAL' and, if circle=true a small one time rotating circle in the rightmost digit
 // the circle takes roughly 600ms
 void LCD::calibration(bool circle) {
-  uint8_t dtime = 100;
-  writeDigitRaw(0, numbertable[12]); // C
-  writeDigitRaw(1, numbertable[10]); // A
-  writeDigitRaw(3, 0b00111000);      // L
-  writeDisplay();
-  if (circle) {
-    for (int i = 0; i < 6; ++i) {
-      writeDigitRaw(4, 1 << i);
-      writeDisplay();
-      delay(dtime);
-    }
-  }
+  
 }
 
 // shows 'CAL1'
 void LCD::calibration1() {
-  writeDigitRaw(0, numbertable[12]); // C
-  writeDigitRaw(1, numbertable[10]); // A
-  writeDigitRaw(3, 0b00111000);      // L
-  writeDigitRaw(4, numbertable[1]);  // 1
-  writeDisplay();
+//cal1 过程显示
+
 }
+//'cal1 finish'
+void LCD::calibration1_done() {
+//完成 cal1 显示
+
+}
+
 
 // shows 'CAL2'
 void LCD::calibration2() {
-  writeDigitRaw(0, numbertable[12]); // C
-  writeDigitRaw(1, numbertable[10]); // A
-  writeDigitRaw(3, 0b00111000);      // L
-  writeDigitRaw(4, numbertable[2]);  // 2
-  writeDisplay();
+//cal2 过程显示
 }
+
+//'cal2 finish'
+void LCD::calibration2_done() {
+//完成 cal1 显示
+
+}
+
 
 // shows 'done'
 void LCD::done() {
-  writeDigitRaw(0, numbertable[13]); // d
-  writeDigitRaw(1, numbertable[0]);  // O
-  writeDigitRaw(3, 0b01010100);      // n
-  writeDigitRaw(4, numbertable[14]); // E
-  writeDisplay();
+
 }
 
-// if digit<0 shows a '-' moving from left to right with given delays
-// if digit in {0,1,3,4}, displays a '-' at that digit
-void LCD::lineAnim(int8_t digit, uint16_t dtime) {
-  if (digit > 4 || digit == 2) {
-    return;
-  } else {
-    writeDigitRaw(0, 0);
-    writeDigitRaw(1, 0);
-    writeDigitRaw(3, 0);
-    writeDigitRaw(4, 0);
-    if (digit < 0) {
-      // loop once
-      writeDigitRaw(0, 0b01000000);
-      writeDisplay();
-      delay(dtime);
-      for (int led = 1; led < 5; ++led) {
-        if (led == 2) {
-          continue;
-        }
-        writeDigitRaw(led == 3 ? 1 : (led-1), 0);
-        writeDigitRaw(led, 0b01000000);
-        writeDisplay();
-        delay(dtime);
-      }
-    } else {
-      writeDigitRaw(digit, 0b01000000);
-      writeDisplay();
-    }
-  }
-}
 
 // writes software display buffer to physical display
 void LCD::writeDisplay(void) {
@@ -472,21 +336,3 @@ void LCD::writeDisplay(void) {
   Wire.endTransmission();
 }
 
-// helper to remove leading zeros
-void LCD::calcDigits(uint8_t* dig, int16_t num) {
-  dig[0] = numbertable[num / 1000];
-  num %= 1000;
-  dig[1] = numbertable[num / 100];
-  num %= 100;
-  dig[3] = numbertable[num / 10];
-  dig[4] = numbertable[num % 10];
-  if (dig[0] == numbertable[0]) {
-    dig[0] = 0;
-    if (dig[1] == numbertable[0]) {
-      dig[1] = 0;
-      if (dig[3] == numbertable[0]) {
-        dig[3] = 0;
-      }
-    }
-  }
-}
