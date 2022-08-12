@@ -54,6 +54,8 @@ LCD::~LCD() {
 // sets max brightness, no blinking
 void LCD::init() {
   
+  display.init(240, 280);           // Init ST7789 240x240
+  tft.setRotation(2); 
 
 }
 

@@ -82,7 +82,10 @@
 #endif
 
 // LCD object
-LCD display = LCD();
+//LCD display = LCD();
+Adafruit_ST7789 display = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
+
+
 
 // color sensor object
 #define CS_POWER 2

@@ -52,6 +52,13 @@
 #include <SPI.h>
 
 
+#define TFT_CS         7
+#define TFT_RST        9 // Or set to -1 and connect to Arduino RESET pin
+#define TFT_DC         8
+#define TFT_MOSI 11  // Data out
+#define TFT_SCLK 13  // Clock out
+
+//Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
 
 class LCD {
