@@ -95,11 +95,11 @@
 #define AVERAGE_THRESHOLD 0.044 // 0,011 correspond to about 1 value on the Tonino scale
 
 // thresholds for detecting calibration plates at startup
-#define LOW_RED      2600 // brown disk red reading
-#define LOW_BLUE     1600 // brown disk blue reading
+#define LOW_RED      2400 // brown disk red reading 2600
+#define LOW_BLUE     1400 // brown disk blue reading 1600
 #define HIGH_RED    15000 // red disk red reading
 #define HIGH_BLUE    3600 // red disk blue reading
-#define RED_RANGE_LOW    2100
+#define RED_RANGE_LOW    2100//2100
 #define RED_RANGE_HIGH   7000
 #define BLUE_RANGE_LOW   1500
 #define BLUE_RANGE_HIGH  2100

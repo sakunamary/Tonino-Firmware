@@ -82,8 +82,8 @@
 #define DEFAULT_SCALE_1 0.0
 #define DEFAULT_SCALE_2  102.2727273  //102.2727273
 #define DEFAULT_SCALE_3 -128.4090909  // -128.4090909 
-#define DEFAULT_CAL_0   1.906901 //1.011949
-#define DEFAULT_CAL_1    -0.768031//-0.094599
+#define DEFAULT_CAL_0   0.837010 //1.011949
+#define DEFAULT_CAL_1    0.704125//-0.094599
 
 #define AVERAGE_TIME_SPAN 4000 // 4000=4sec; time in milliseconds after which averaging is restarted
 
