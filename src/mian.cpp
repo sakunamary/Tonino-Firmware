@@ -316,7 +316,7 @@ void setup() {
   //digitalWrite(13, HIGH);
 
   // initialize serial communication
-  tSerial.init(115200);
+  tSerial.init(57600);
 
   // directly check if there is an incoming serial command (connected to computer)
   checkCommands();
