@@ -222,7 +222,7 @@ boolean calibrate() {
 
       float cal[2];
       //cal[0] = ((HIGH_TARGET - LOW_TARGET) / (rb_high - rb_low));
-      cal[0] = ((HIGH_TARGET - LOW_TARGET) / (rb_high - rb_low));  //3.7-1.5
+      cal[0] = ((HIGH_TARGET - LOW_TARGET) / (rb_high - rb_low))*0.77;  //3.7-1.5
       cal[1] = LOW_TARGET - cal[0]*rb_low;
      
 
