@@ -47,8 +47,8 @@
 #include <FreqCount.h>
 
 #include <tonino.h>
-#include <tonino_lcd.h>
-
+//#include <tonino_lcd.h>
+#include <tonino_st7789.h>
 
 // sampling rates; x means scan duration of 1/x per color
 #define FULL_SAMPLING 1

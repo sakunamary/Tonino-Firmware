@@ -50,7 +50,8 @@
 #include <Arduino.h>
 
 #include <tonino.h>
-#include <tonino_lcd.h>
+//#include <tonino_lcd.h>
+#include <tonino_st7789.h>
 #include <tonino_tcs3200.h>
 #include <tonino_serial.h>
 #include <tonino_config.h>
@@ -82,9 +83,8 @@
 #endif
 
 // LCD object
-//LCD display = LCD();
-Adafruit_ST7789 display = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
+LCD display = LCD();
 
 
 // color sensor object
@@ -325,7 +325,7 @@ void setup() {
   checkCommands();
 
   // LCD init
-  display.init(LCD_I2C_ADD);
+  display.init();
   display.clear();
 
   // color sensor init
@@ -343,7 +343,7 @@ void setup() {
   tConfig.init();
   
   // show that the display is working
-  display.eightSequence();
+  //display.eightSequence();
   digitalWrite(13, LOW);
   pinMode (13, INPUT);
 

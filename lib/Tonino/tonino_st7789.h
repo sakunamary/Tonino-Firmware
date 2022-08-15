@@ -61,6 +61,7 @@
 //Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
 
+
 class LCD {
   public:
     LCD(void);
@@ -68,35 +69,35 @@ class LCD {
 
     // initializes display using I2C start sequence
     // sets max brightness, no blinking
-    void init(uint8_t addr);
-
+   // void init(uint8_t addr);
+    void init();
     // write bitmask on digit d (0, 1, 3, 4)
-    void writeDigitRaw(uint8_t d, uint8_t bitmask); //作废 
+    //void writeDigitRaw(uint8_t d, uint8_t bitmask); //作废 
     
     // write number num (0-F) on digit d (0, 1, 3, 4)//作废 
-    void writeDigitNum(uint8_t d, uint8_t num);
+    //void writeDigitNum(uint8_t d, uint8_t num);
     
     // display a number n from -999 to 9999
     void printNumber(int16_t n);
 
     // sets the display brightness (0-15, 15=max brightness)//作废 
-    void setBrightness(uint8_t b);
+    //void setBrightness(uint8_t b);
     
     // get the display brightness (0-15, 15=max brightness)//作废 
-    uint8_t getBrightness();
+    //uint8_t getBrightness();
     
     // sets the display to blink (0=no, 1=fast ... 3=slow)//作废 
-    void setBlinkRate(uint8_t rate);
+    //void setBlinkRate(uint8_t rate);
 
     
     // draw a horizontal line ////作废 
     void line();
     
     // display 4 eights, i.e. light all segments //作废 
-    void eights();
+   // void eights();
     
     // display 4 eights one after the other, takes 1 second //作废
-    void eightSequence();
+   // void eightSequence();
     
     // display the letters "dose"
     void dose();

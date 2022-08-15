@@ -18,7 +18,7 @@
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": {
                 "type": "PlatformIO",
-                "task": "Pre-Debug (LGT8f_mac)"
+                "task": "Pre-Debug"
             }
         },
         {
