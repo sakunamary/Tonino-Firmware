@@ -1,4 +1,4 @@
-#include "tonino_ST7789.h"
+#include "tonino_st7789.h"
 #include "Adafruit_ST77xx.h"
 
 // CONSTRUCTORS ************************************************************
