@@ -88,11 +88,11 @@ class ToninoConfig {
     // sets and stores the display brightness to EEPROM (0-15, 15=max brightness)
     void setBrightness(uint8_t b);
 
-    // gets the display brightness from EEPROM (0-15, 15=max brightness)
-    uint8_t getBrightness();
+    // gets the display brightness from EEPROM (0-15, 15=max brightness) //作废
+    //uint8_t getBrightness();
 
-    // store color mode setting to sensor library and EEPROM
-    void setColorMode(uint8_t cmode);
+    // store color mode setting to sensor library and EEPROM//作废
+    //void setColorMode(uint8_t cmode);
 
     // store whether initial calibration is tried setting to local variable and EEPROM
     void setCheckCalInit(bool iwc);
