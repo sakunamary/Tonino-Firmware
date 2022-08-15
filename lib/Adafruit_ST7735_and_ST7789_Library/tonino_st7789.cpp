@@ -24,18 +24,6 @@ LCD::LCD(int8_t cs, int8_t dc, int8_t mosi, int8_t sclk,
 LCD::LCD(int8_t cs, int8_t dc, int8_t rst)
     : Adafruit_ST77xx(240, 280, cs, dc, rst) {}
 
-#if !defined(ESP8266)
-/*!
-    @brief  Instantiate Adafruit ST7789 driver with selectable hardware SPI
-    @param  spiClass  Pointer to an SPI device to use (e.g. &SPI1)
-    @param  cs        Chip select pin #
-    @param  dc        Data/Command pin #
-    @param  rst       Reset pin # (optional, pass -1 if unused)
-*/
-LCD::LCD(SPIClass *spiClass, int8_t cs, int8_t dc,
-                                 int8_t rst)
-    : Adafruit_ST77xx(240, 280, spiClass, cs, dc, rst) {}
-#endif // end !ESP8266
 
 // SCREEN INITIALIZATION ***************************************************
 
