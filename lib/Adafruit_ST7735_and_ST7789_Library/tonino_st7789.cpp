@@ -177,7 +177,6 @@ void LCD::setRotation(uint8_t m) {
 // draw a horizontal line
 void LCD::line() {
 
-
 }  
 
 // display the letters "dose"
@@ -247,6 +246,7 @@ void LCD::calibration2() {
 void LCD::done() {
 
 }
+
 
 // writes software display buffer to physical display
 void LCD::writeDisplay(void) {

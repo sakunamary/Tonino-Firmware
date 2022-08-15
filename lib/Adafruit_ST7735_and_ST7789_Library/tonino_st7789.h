@@ -41,6 +41,8 @@ public:
     void calibration2();
     // shows 'done'   //显示完成字样
     void done();
+    // shows 'line'
+    void line();
        
 
 

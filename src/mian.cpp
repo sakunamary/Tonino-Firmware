@@ -393,7 +393,7 @@ void loop() {
       // short wait because it might already be dark before 
       // the can is fully placed on the surface
       delay(1000);
-      display.circle(2, 500);
+      display.line();
       display.clear();
       delay(100);
 

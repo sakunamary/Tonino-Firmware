@@ -66,6 +66,14 @@
 //#define LCD_I2C_ADD  0x70  //TM1637   
 
 
+  #define TFT_CS        10
+  #define TFT_RST        9 // Or set to -1 and connect to Arduino RESET pin
+  #define TFT_DC         8
+  #define TFT_MOSI 11  // Data out
+  #define TFT_SCLK 13  // Clock out
+
+
+
 // low power mode if no action during this time
 // DIM < SLEEP < POWERDOWN
 #define TIME_TILL_DIM        120000 //  2 minutes = 120000
