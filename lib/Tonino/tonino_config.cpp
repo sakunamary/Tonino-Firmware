@@ -112,21 +112,24 @@ void ToninoConfig::setSampling(uint8_t sampling) {
   checkedEepromWrite(EEPROM_SAMPLING_ADDRESS, sampling);
 }
 
-// sets and stores the display brightness to EEPROM (0-15, 15=max brightness)
+// sets and stores the display brightness to EEPROM (0-15, 15=max brightness) //作废
+/*
 void ToninoConfig::setBrightness(uint8_t b) {
   if (_display != NULL) {
 		_display->setBrightness(b);
 		checkedEepromWrite(EEPROM_BRIGHTNESS_ADDRESS, b);
 	}
 }
-
-// gets the display brightness from EEPROM (0-15, 15=max brightness)
+*/
+// gets the display brightness from EEPROM (0-15, 15=max brightness) //作废
+/*
 uint8_t ToninoConfig::getBrightness() {
   if (_display != NULL) {
 		return _display->getBrightness();
 	}
 	return 0;
 }
+*/
 
 // store color mode setting to sensor library and EEPROM
 void ToninoConfig::setColorMode(uint8_t cmode) {
@@ -163,8 +166,8 @@ void ToninoConfig::writeDefaults() {
   WRITEDEBUGLN("Store def");
   WRITEDEBUG("Sampling: ");
   setSampling(DEFAULT_SAMPLING);
-  WRITEDEBUG("Bright: ");
-  setBrightness(DEFAULT_BRIGHTNESS);
+  //WRITEDEBUG("Bright: ");
+  //setBrightness(DEFAULT_BRIGHTNESS);
   WRITEDEBUG("Col mode: ");
   setColorMode(DEFAULT_COLORS);
   WRITEDEBUG("Do_init_cal: ");
@@ -331,6 +334,7 @@ void ToninoConfig::readStoredParameters() {
   WRITEDEBUGLN();
 
   // display brightness
+  /*
   WRITEDEBUG("Bright:");
   if (_display != NULL) {
 		value = checkedEepromRead(EEPROM_BRIGHTNESS_ADDRESS);
@@ -344,7 +348,7 @@ void ToninoConfig::readStoredParameters() {
 		WRITEDEBUG(" ignored");
 	}
   WRITEDEBUGLN();
-
+*/
   // color mode
   WRITEDEBUG("Col mode:");
   value = checkedEepromRead(EEPROM_CMODE_ADDRESS);

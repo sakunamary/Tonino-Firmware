@@ -48,6 +48,7 @@
 #endif
 
 #include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_ST7735.h> 
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include <SPI.h>
 
@@ -58,14 +59,19 @@
 #define TFT_MOSI 11  // Data out
 #define TFT_SCLK 13  // Clock out
 
-//Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
+//
 
 
 
-class LCD {
+class LCD : public Adafruit_ST7789{
   public:
-    LCD(void);
+    LCD(int8_t cs, int8_t dc, int8_t mosi, int8_t sclk,
+                  int8_t rst = -1);
     ~LCD(void);
+  void setRotation(uint8_t m);
+  void init(uint16_t width, uint16_t height, uint8_t spiMode = SPI_MODE0);
+
+
 
     // initializes display using I2C start sequence
     // sets max brightness, no blinking
@@ -159,11 +165,19 @@ class LCD {
     
     // if digit<0 shows a '-' moving from left to right with given delays
     // if digit in {0,1,3,4}, displays a '-' at that digit
-    void lineAnim(int8_t digit, uint16_t dtime = 200); //作废
+    //void lineAnim(int8_t digit, uint16_t dtime = 200); //作废
+
+protected:
+  uint8_t _colstart2 = 0, ///< Offset from the right
+      _rowstart2 = 0;     ///< Offset from the bottom
+
 
   private:
     // stores the display's I2C address
-    static uint8_t i2cAddr;
+
+    uint16_t windowWidth;
+    uint16_t windowHeight;
+    //static uint8_t i2cAddr;
     // virtual display buffer; needs to be sent by writeDisplay()
     //static uint16_t displaybuffer[8]; 
     // specifies LCD brightness
@@ -173,6 +187,7 @@ class LCD {
     void writeDisplay();
     // helper to remove leading zeros
     void calcDigits(uint8_t* dig, int16_t num);
+
 };
 
 #endif

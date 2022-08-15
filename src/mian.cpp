@@ -84,7 +84,7 @@
 
 // LCD object
 
-LCD display = LCD();
+LCD display = LCD(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
 
 // color sensor object
@@ -150,6 +150,8 @@ inline uint32_t checkLowPowerMode(bool isLight, uint32_t lastTimestamp) {
     return millis();
 
   } else if (millis() - lastTimestamp > TIME_TILL_DIM) {
+    /*
+    显示黑屏或者挂机
     if (origBrightness < 0) {
       // temporarily set low brightness
       origBrightness = tConfig.getBrightness();
@@ -161,6 +163,7 @@ inline uint32_t checkLowPowerMode(bool isLight, uint32_t lastTimestamp) {
     // restore original brightness
     display.setBrightness(origBrightness);
     origBrightness = -1;
+    */
   }
   return lastTimestamp;
 }
@@ -325,17 +328,10 @@ void setup() {
   checkCommands();
 
   // LCD init
-  display.init();
+  display.init(240,280,SPI_MODE3);
   display.clear();
 
   // color sensor init
-  //***r0bin hack, before calling colorSense.init()
-  ///pinMode (CS_S0,OUTPUT);
-  //pinMode (CS_S1,OUTPUT);
-  // Setting frequency scaling to 20%
-  //digitalWrite(CS_S0,HIGH);
-  //digitalWrite(CS_S1,LOW);
-  // call now initialize  
   colorSense.init();
 
   // read parameters from EEPROM or write defaults if not available

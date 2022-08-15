@@ -266,7 +266,8 @@ void ToninoSerial::getScaling() {
   Serial.print("\n");
 }
 
-// sets the display brightness (0-15, 15=max brightness) and store in EEPROM
+// sets the display brightness (0-15, 15=max brightness) and store in EEPROM//作废
+/*
 void ToninoSerial::setBrightness() {
   // get from serial
   char *arg = _sCmd.next();
@@ -289,14 +290,15 @@ void ToninoSerial::setBrightness() {
     Serial.print("\n");
   }
 }
-
-// print current scaling data to serial
+*/
+// print current scaling data to serial /作废
+/*
 void ToninoSerial::getBrightness() {
   Serial.print("GETBRIGHTNESS:");
   Serial.print(_display->getBrightness());
   Serial.print("\n");
 }
-
+*/
 // save sampling rate setting from serial to sensor library and EEPROM
 void ToninoSerial::setSampling() {
   // get from serial

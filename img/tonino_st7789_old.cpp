@@ -38,7 +38,7 @@
 // ------------------------------------------------------------------------------------------
 
 
-#include <tonino_lcd.h>
+//#include <tonino_lcd.h>
 
 
 
@@ -53,8 +53,6 @@ LCD::~LCD() {
 // initializes display using I2C start sequence
 // sets max brightness, no blinking
 void LCD::init() {
-
-  Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
   tft.init(240, 280);           // Init ST7789 240x240
   tft.setRotation(2); 
 
