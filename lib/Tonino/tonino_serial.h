@@ -46,8 +46,8 @@
 
 #include <tonino.h>
 #include <tonino_config.h>
-#include <tonino_lcd.h>
-
+//#include <tonino_lcd.h>
+#include <tonino_st7789.h>
 
 class ToninoSerial {
   public:
