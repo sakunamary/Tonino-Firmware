@@ -71,46 +71,46 @@ class LCD {
     void init(uint8_t addr);
 
     // write bitmask on digit d (0, 1, 3, 4)
-    void writeDigitRaw(uint8_t d, uint8_t bitmask);
+    void writeDigitRaw(uint8_t d, uint8_t bitmask); //作废 
     
-    // write number num (0-F) on digit d (0, 1, 3, 4)
+    // write number num (0-F) on digit d (0, 1, 3, 4)//作废 
     void writeDigitNum(uint8_t d, uint8_t num);
     
     // display a number n from -999 to 9999
     void printNumber(int16_t n);
-    
-    // sets the display brightness (0-15, 15=max brightness)
+
+    // sets the display brightness (0-15, 15=max brightness)//作废 
     void setBrightness(uint8_t b);
     
-    // get the display brightness (0-15, 15=max brightness)
+    // get the display brightness (0-15, 15=max brightness)//作废 
     uint8_t getBrightness();
     
-    // sets the display to blink (0=no, 1=fast ... 3=slow)
+    // sets the display to blink (0=no, 1=fast ... 3=slow)//作废 
     void setBlinkRate(uint8_t rate);
 
     
-    // draw a horizontal line
+    // draw a horizontal line ////作废 
     void line();
     
-    // display 4 eights, i.e. light all segments
+    // display 4 eights, i.e. light all segments //作废 
     void eights();
     
-    // display 4 eights one after the other, takes 1 second
+    // display 4 eights one after the other, takes 1 second //作废
     void eightSequence();
     
     // display the letters "dose"
     void dose();
     
-    // display the letters "hi"
+    // display the letters "hi" //替换成开机画面
     void hi();
     
-    // display the letters "up"
+    // display the letters "up" // 显示up 动画
     void up();
     
-    // display the letters "PC"
+    // display the letters "PC" //显示PC静态画面
     void connected();
     
-    // display the letters "EEEE"
+    // display the letters "EEEE" //显示错误画面
     void error();
     
     // clears the display (all segments to dark)
@@ -119,7 +119,7 @@ class LCD {
     // indicates averaging (light first dot)
     void averaged(boolean dot);
     
-    // shows a rotating circle; total time =repeat*timePerCircle
+    // shows a rotating circle; total time =repeat*timePerCircle //作废
     void circle(uint8_t repeat = 1, uint16_t timePerCircle = 700);
     
     // displays a number; effect: each digit sequentially counts from 0
@@ -147,18 +147,18 @@ class LCD {
     // the circle takes roughly 600ms
     void calibration(bool circle = true);
     
-    // shows 'CAL1'
+    // shows 'CAL1' //显示cal1 字样
     void calibration1();
     
-    // shows 'CAL2'
+    // shows 'CAL2'   //显示cal2字样
     void calibration2();
     
-    // shows 'done'
+    // shows 'done'   //显示完成字样
     void done();
     
     // if digit<0 shows a '-' moving from left to right with given delays
     // if digit in {0,1,3,4}, displays a '-' at that digit
-    void lineAnim(int8_t digit, uint16_t dtime = 200);
+    void lineAnim(int8_t digit, uint16_t dtime = 200); //作废
 
   private:
     // stores the display's I2C address

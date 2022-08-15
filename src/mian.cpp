@@ -360,6 +360,7 @@ void setup() {
     }
   } else {
     display.clear();
+
   }
 }
 
