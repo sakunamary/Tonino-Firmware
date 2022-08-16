@@ -15,7 +15,7 @@ public:
 
   //append tonino display function 
     // display a number n from -999 to 9999
-    void printNumber(int16_t n);
+    void printNumber(int16_t n); //显示数据值
     // display the letters "dose"
     void dose();
     // display the letters "hi" //替换成开机画面
@@ -31,7 +31,7 @@ public:
     // indicates averaging (light first dot)
     void averaged(boolean dot);
      // displays a number; effect: like a snake leaving behind the num
-    void snake(uint16_t num);
+    void snake(uint16_t num);// 显示菊花转动
     // shows 'CAL' and, if circle=true a small one time rotating circle in the rightmost digit
     // the circle takes roughly 600ms
     void calibration(bool circle = true);

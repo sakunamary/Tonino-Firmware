@@ -160,14 +160,14 @@ int32_t TCS3200::scan(float *raw, bool displayAnim, sensorData *outersd, boolean
   
   if (_colorMode & COLOR_WHITE) {
     if (displayAnim && _display != NULL) {
-      _display->lineAnim(animPos++, 0);
+      //_display->lineAnim(animPos++, 0);
     }
     setFilter(WHITE_IDX); // white sensor
     sd.value[WHITE_IDX] = readSingle();
   }
   if (_colorMode & COLOR_RED) {
     if (displayAnim && _display != NULL) {
-      _display->lineAnim(animPos++, 0);
+      //_display->lineAnim(animPos++, 0);
       if (animPos == 2) animPos++;
     }
     setFilter(RED_IDX); // red sensor
@@ -178,7 +178,7 @@ int32_t TCS3200::scan(float *raw, bool displayAnim, sensorData *outersd, boolean
   }
   if (_colorMode & COLOR_BLUE) {
     if (displayAnim && _display != NULL) {
-      _display->lineAnim(animPos, 0);
+      //_display->lineAnim(animPos, 0);
       if (animPos == 2) animPos++;
     }
     setFilter(BLUE_IDX); // blue sensor
@@ -186,7 +186,7 @@ int32_t TCS3200::scan(float *raw, bool displayAnim, sensorData *outersd, boolean
   }
   if (_colorMode & COLOR_GREEN) {
     if (displayAnim && _display != NULL) {
-      _display->lineAnim(animPos++, 0);
+      //_display->lineAnim(animPos++, 0);
     }
     setFilter(GREEN_IDX); // green sensor
     sd.value[GREEN_IDX] = readSingle();

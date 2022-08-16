@@ -114,10 +114,10 @@ class ToninoSerial {
     static void getCheckCalInit();
 
     // set the display brightness (0-15, 15=max brightness)
-    static void setBrightness();
+    //static void setBrightness();
 
     // get the display brightness (0-15, 15=max brightness)
-    static void getBrightness();
+    //static void getBrightness();
 
     // save delay time between successive measurements that test if can was lifted to EEPROM; response SETLTDELAY
     // ATTENTION: one byte value (0-255) in 1/10sec, e.g. 20 means 2 seconds

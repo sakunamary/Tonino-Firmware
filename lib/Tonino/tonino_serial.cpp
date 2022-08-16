@@ -105,8 +105,8 @@ void ToninoSerial::init(uint32_t speed) {
   _sCmd.addCommand("GETCAL", getCalibration);
   _sCmd.addCommand("SETSCALI", setScaling);
   _sCmd.addCommand("GETSCALI", getScaling);
-  _sCmd.addCommand("SETBRIGH", setBrightness);
-  _sCmd.addCommand("GETBRIGH", getBrightness);
+  //_sCmd.addCommand("SETBRIGH", setBrightness);
+  //_sCmd.addCommand("GETBRIGH", getBrightness);
   _sCmd.addCommand("SETSAMPL", setSampling);
   _sCmd.addCommand("GETSAMPL", getSampling);
   _sCmd.addCommand("SETCMODE", setColorMode);
@@ -137,9 +137,9 @@ void ToninoSerial::scan() {
   Serial.print("\n");
 
   if (val < 0 || val > 9999) {
-    _display->line();
+    _display->line(); // 错误数据
   } else {
-    _display->snake(val);
+    _display->snake(val);//
   }
 }
 

@@ -13,7 +13,7 @@
 */
 LCD::LCD(int8_t cs, int8_t dc, int8_t mosi, int8_t sclk,
                                  int8_t rst)
-    : Adafruit_ST77xx(240, 280, cs, dc, mosi, sclk, rst) {}
+    : Adafruit_ST77xx(240, 320, cs, dc, mosi, sclk, rst) {}
 
 /*!
     @brief  Instantiate Adafruit ST7789 driver with hardware SPI
@@ -22,7 +22,7 @@ LCD::LCD(int8_t cs, int8_t dc, int8_t mosi, int8_t sclk,
     @param  rst  Reset pin # (optional, pass -1 if unused)
 */
 LCD::LCD(int8_t cs, int8_t dc, int8_t rst)
-    : Adafruit_ST77xx(240, 280, cs, dc, rst) {}
+    : Adafruit_ST77xx(240, 320, cs, dc, rst) {}
 
 
 // SCREEN INITIALIZATION ***************************************************
@@ -105,7 +105,7 @@ void LCD::init(uint16_t width, uint16_t height, uint8_t mode) {
     _colstart2 = (int)((240 - width) / 2);
   } else {
     // 1.47", 1.69, 1.9", 2.0" displays (centered)
-    _rowstart = _rowstart2 = (int)((280 - height) / 2);
+    _rowstart = _rowstart2 = (int)((320 - height) / 2);
     _colstart = _colstart2 = (int)((240 - width) / 2);
   }
 
@@ -161,7 +161,12 @@ void LCD::setRotation(uint8_t m) {
   sendCommand(ST77XX_MADCTL, &madctl, 1);
 }
 
-
+//  
+void LCD::printNumber(int16_t n) {
+  if (n < -999 || n > 9999) {
+    error();
+  }
+}
 // draw a horizontal line
 void LCD::line() {
 
