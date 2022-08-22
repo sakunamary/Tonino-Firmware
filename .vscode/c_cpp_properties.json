@@ -68,7 +68,7 @@
                 "ARDUINO_AVR_LARDU_328P",
                 "AVR_LARDU_328E",
                 "F_CPU=16000000L",
-                "CLOCK_SOURCE=1",
+                "CLOCK_SOURCE=2",
                 "ARDUINO_ARCH_AVR",
                 "ARDUINO_ARCH_LGT",
                 "ARDUINO=10812",
